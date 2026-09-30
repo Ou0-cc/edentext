@@ -88,6 +88,16 @@
   import { registerEmbeddedFonts, clearEmbeddedFonts, embeddedFonts } from './lib/fonts/embeddedFonts';
   import { saveEmbeddedFonts, loadEmbeddedFonts, clearEmbeddedFontStore } from './lib/storage/embeddedFontStore';
   import { noteEmbeddedFonts } from './lib/components/ribbon/fontList.svelte';
+  import { init } from '@plausible-analytics/tracker';
+
+  onMount(() => {
+      init({
+          domain: 'ou0.cc',
+          endpoint: 'https://plausible.canine.tools/api/event',
+          captureOnLocalhost: false,
+          outboundLinks: true
+      });
+  });
 
   // launchQueue is not in lib.dom yet; reach it through this shape.
   type WithLaunchQueue = Window & {
